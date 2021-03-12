@@ -12,7 +12,7 @@ public class Leetcode350 {
     public static void main(String[] args) {
         int[] nums1 = {4, 9, 5};
         int[] nums2 = {9, 4, 9, 8, 4};
-        System.out.println(Arrays.toString(intersect(nums1, nums2)));
+        System.out.println(Arrays.toString(intersect2(nums1, nums2)));
     }
 
     /**
@@ -77,6 +77,39 @@ public class Leetcode350 {
                 cnt++;
                 if (count - 1 <= 0) map.remove(i);
                 else map.put(i,count-1);
+            }
+        }
+        return Arrays.copyOfRange(temp,0,cnt);
+    }
+
+    /**
+     * 方法二：双指针
+     * 思路：
+     *  1. 先将两个数组进行排序
+     *  2. 使用两个指针分别遍历两个数组，当两个数相等时输出到答案，不相等的话将小的那个数的指针往前移动一位
+     *
+     * 执行用时：1 ms, 在所有 Java 提交中击败了100.00%的用户
+     * 内存消耗：38.6 MB, 在所有 Java 提交中击败了74.24%的用户
+     */
+    public static int[] intersect2(int[] nums1, int[] nums2) {
+        // 对两个数组进行排序
+        Arrays.sort(nums1);
+        Arrays.sort(nums2);
+
+        int x = 0,y = 0,cnt = 0;
+        int[] temp = new int[Math.min(nums1.length,nums2.length)];
+        while (x < nums1.length && y < nums2.length){
+            if (nums1[x] == nums2[y]){
+                temp[cnt] = nums1[x];
+                y++;
+                x++;
+                cnt++;
+            } else {
+                if (nums1[x] > nums2[y]){
+                    y++;
+                } else {
+                    x++;
+                }
             }
         }
         return Arrays.copyOfRange(temp,0,cnt);
