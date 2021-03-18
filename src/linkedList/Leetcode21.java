@@ -6,16 +6,16 @@ package linkedList;
  * @Version 1.0
  */
 public class Leetcode21 {
-    public static class ListNode {
+    private static class ListNode {
         int val;
         ListNode next;
         ListNode() {}
         ListNode(int val) { this.val = val; }
         ListNode(int val, ListNode next) { this.val = val; this.next = next; }
     }
-    private static void main(String[] args) {
-        int[] input1 = {};
-        int[] input2 = {};
+    public static void main(String[] args) {
+        int[] input1 = {1,2,4};
+        int[] input2 = {1,3,4};
 
         ListNode list1 = new ListNode(input1[0]);
         ListNode list2 = new ListNode(input2[0]);
@@ -30,7 +30,7 @@ public class Leetcode21 {
             temp = temp.next;
         }
 
-        ListNode res = mergeTwoLists(list1,list2);
+        ListNode res = mergeTwoLists1(list1,list2);
 
         while (res != null){
             System.out.print(res.val);
@@ -60,6 +60,26 @@ public class Leetcode21 {
         else temp.next = node1;
 
         return res.next;
+
+    }
+
+    public static ListNode mergeTwoLists1(ListNode l1, ListNode l2) {
+        ListNode node1 = l1,node2 = l2,head = new ListNode(),temp = head;
+        while (node1 != null && node2 != null){
+            if (node1.val >= node2.val) {
+                temp.next = node2;
+                node2 = node2.next;
+            } else {
+                temp.next = node1;
+                node1 = node1.next;
+            }
+            temp = temp.next;
+        }
+
+        if (node1 == null) temp.next = node2;
+        else temp.next = node1;
+
+        return head.next;
 
     }
 }
