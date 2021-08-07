@@ -9,23 +9,16 @@ public class JZOffer04 {
             return false;
         }
         int i = 0, j = matrix[0].length - 1;
-        while (true) {
+        while (j >= 0 && i < matrix.length) {
             if (matrix[i][j] > target) {
-                if (j - 1 < 0) {
-                    return false;
-                } else {
-                    j--;
-                }
+                j--;
             } else if (matrix[i][j] < target) {
-                if (i + 1 >= matrix.length) {
-                    return false;
-                } else {
-                    i++;
-                }
+                i++;
             } else {
                 return true;
             }
         }
+        return false;
     }
 
     public static void main(String[] args) {
