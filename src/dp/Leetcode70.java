@@ -1,4 +1,4 @@
-package dynamicProgramming;
+package dp;
 
 /**
  * @Author Verge
