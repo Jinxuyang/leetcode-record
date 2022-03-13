@@ -9,15 +9,16 @@ import java.util.Arrays;
  */
 public class QuickSort {
     public static void main(String[] args) {
-        int[] arr = {2,3,4,5,1,34,2,4,3,23,423324,234,3425,23,234,12,3124,5342423};
-        //int[] arr = {1,3,2,5};
+        int[] arr1 = {2,3,4,5,1,34,2,4,3,23,423324,234,3425,23,234,12,3124,5342423,3254,234365,547,43,23123,3124,312,23,5423,32,432,234,2,3412,12,34231};
+        int[] arr = {2,3,4,5,1,34,2,4,3,23,423324,234,3425,23,234,12,3124,5342423,3254,234365,547,43,23123,3124,312,23,5423,32,432,234,2,3412,12,34231};
         quickSort(arr, 0, arr.length - 1);
+        Arrays.sort(arr1);
+        System.out.println(Arrays.toString(arr1));
         System.out.println(Arrays.toString(arr));
     }
 
     public static void quickSort(int[] arr, int L, int R) {
         if (L >= R) return;
-        swap(arr, (int) (Math.random() * (R - L)) + L, R);
         int[] area = partition(arr, L, R);
         quickSort(arr, L, area[0]);
         quickSort(arr, area[1], R);
@@ -34,7 +35,7 @@ public class QuickSort {
         int i = L;
         int minArea = L - 1;
         int maxArea = R + 1;
-        int num = arr[R];
+        int num = arr[(int) (Math.random() * (R - L)) + L];
         while (i < maxArea) {
             if (arr[i] < num) {
                 swap(arr, ++minArea, i++);
