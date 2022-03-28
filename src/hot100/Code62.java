@@ -11,7 +11,7 @@ import java.util.Map;
 public class Code62 {
     public static void main(String[] args) {
         Code62 code62 = new Code62();
-        System.out.println(code62.uniquePaths1(3, 7));
+        System.out.println(code62.uniquePaths(3, 7));
     }
 
     // 超时
@@ -20,7 +20,6 @@ public class Code62 {
         return res;
     }
 
-    Map<String,Integer> map = new HashMap<>();
     int res = 0;
     public void dfs(int m, int n, int y, int x) {
         if (y < 0 || y > m || x < 0 || x > n) return;
