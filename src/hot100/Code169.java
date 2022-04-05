@@ -21,9 +21,7 @@ public class Code169 {
                 if (nums[i] == res) count++;
                 else count--;
             }
-
         }
-
         return res;
     }
 }
