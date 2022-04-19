@@ -73,4 +73,35 @@ public class Code34 {
 
         return ans;
     }
+
+    public int[] searchRange2(int[] nums, int target) {
+        int left = 0, right = nums.length - 1;
+
+        int[] res  = new int[2];
+        while(left <= right) {
+            int mid = left + (right - left) / 2;
+            if(nums[mid] == target) {
+                right = mid - 1;
+            } else if(nums[mid] > target) {
+                right = mid - 1;
+            } else if(nums[mid] < target) {
+                left = mid + 1;
+            }
+        }
+        res[0] = left;
+        right = nums.length - 1;
+        while(left <= right) {
+            int mid = left + (right - left) / 2;
+            if(nums[mid] == target) {
+                left = mid + 1;
+            } else if(nums[mid] > target) {
+                right = mid - 1;
+            } else if(nums[mid] < target) {
+                left = mid + 1;
+            }
+        }
+        res[1] = right;
+        if(res[0] > res[1]) return new int[]{-1,-1};
+        return res;
+    }
 }
