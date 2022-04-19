@@ -47,11 +47,11 @@ public class Code47 {
         recur1(nums, visited);
         return res;
     }
-    List<List<Integer>> res = new ArrayList<>();
+    List<List<Integer>> res1 = new ArrayList<>();
     List<Integer> list = new ArrayList<>();
     public void recur1(int[] nums, boolean[] visited) {
         if(list.size() == nums.length) {
-            res.add(new ArrayList<>(list));
+            res1.add(new ArrayList<>(list));
             return;
         }
 
