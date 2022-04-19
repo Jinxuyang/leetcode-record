@@ -39,7 +39,32 @@ public class Code47 {
             list.remove((Object)num);
             nums.add(num);
         }
+    }
 
+    public List<List<Integer>> permuteUnique1(int[] nums) {
+        Arrays.sort(nums);
+        boolean[] visited = new boolean[nums.length];
+        recur1(nums, visited);
+        return res;
+    }
+    List<List<Integer>> res = new ArrayList<>();
+    List<Integer> list = new ArrayList<>();
+    public void recur1(int[] nums, boolean[] visited) {
+        if(list.size() == nums.length) {
+            res.add(new ArrayList<>(list));
+            return;
+        }
 
+        for(int i = 0;i < nums.length;i++) {
+            if(visited[i]) continue;
+
+            if(i > 0 && nums[i] == nums[i - 1] && !visited[i - 1]) continue;
+
+            list.add(nums[i]);
+            visited[i] = true;
+            recur1(nums, visited);
+            list.remove(list.size() - 1);
+            visited[i] = false;
+        }
     }
 }
