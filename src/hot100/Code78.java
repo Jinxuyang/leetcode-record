@@ -1,6 +1,7 @@
 package hot100;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -31,4 +32,18 @@ public class Code78 {
         list.remove(list.size() - 1);
         recur(nums, index + 1, new ArrayList<>(list));
     }
+
+    public void recur1(int[] nums, int index, List<Integer> list) {
+        res.add(new ArrayList<>(list));
+
+        for (int i = index; i < nums.length; i++) {
+            list.add(nums[i]);
+            recur1(nums, index + 1, new ArrayList<>(list));
+            list.remove(list.size() - 1);
+
+        }
+    }
+
+
+
 }
